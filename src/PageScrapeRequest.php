@@ -19,9 +19,22 @@ final readonly class PageScrapeRequest
 		?bool $fullHtml = null,
 		public array $elements = [],
 		public array $options = [],
+		public int $attempt = 1,
 	)
 	{
 		$this->fullHtml = $fullHtml ?? $this->elements === [];
+	}
+
+	public function withIncreasedAttempt(): self
+	{
+		return new self(
+			url: $this->url,
+			renderJs: $this->renderJs,
+			fullHtml: $this->fullHtml,
+			elements: $this->elements,
+			options: $this->options,
+			attempt: $this->attempt + 1,
+		);
 	}
 
 }

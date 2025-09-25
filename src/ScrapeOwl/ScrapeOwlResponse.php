@@ -37,7 +37,7 @@ final class ScrapeOwlResponse implements PageScrapeResponse
 
 	public function resend(): self
 	{
-		return $this->scraper->request($this->request);
+		return $this->scraper->request($this->request->withIncreasedAttempt());
 	}
 
 	public function isSuccess(): bool
@@ -48,6 +48,11 @@ final class ScrapeOwlResponse implements PageScrapeResponse
 	public function getStatusCode(): int
 	{
 		return $this->toArray()['status'];
+	}
+
+	public function getAttemptNumber(): int
+	{
+		return $this->request->attempt;
 	}
 
 	/**
