@@ -27,7 +27,16 @@ interface PageScrapeResponse
 	 * @throws ScrapeElementException
 	 * @throws ScrapeElementNotFoundException
 	 */
-	public function getElementResult(string $id): array;
+	public function getElementResults(string $id): array;
+
+	/**
+	 * @param non-empty-string $id
+	 * @return non-empty-string
+	 *
+	 * @throws ScrapeElementException
+	 * @throws ScrapeElementNotFoundException
+	 */
+	public function getElementResult(string $id): string;
 
 	/**
 	 * @return non-empty-string|null

@@ -69,14 +69,7 @@ final class ScrapeOwlResponse implements PageScrapeResponse
 		}
 	}
 
-	/**
-	 * @param non-empty-string $id
-	 * @return non-empty-list<non-empty-string>
-	 *
-	 * @throws ScrapeElementException
-	 * @throws ScrapeElementNotFoundException
-	 */
-	public function getElementResult(string $id): array
+	public function getElementResults(string $id): array
 	{
 		$array = $this->toArray();
 		$element = $this->request->elements[$id] ?? throw new LogicException(sprintf('Element with ID "%s" not found.', $id));
@@ -104,6 +97,11 @@ final class ScrapeOwlResponse implements PageScrapeResponse
 		}
 
 		throw new LogicException('Element result not found in response.');
+	}
+
+	public function getElementResult(string $id): string
+	{
+		return implode("\n", $this->getElementResults($id));
 	}
 
 	public function getHtml(): ?string
