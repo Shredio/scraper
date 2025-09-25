@@ -28,7 +28,7 @@ final class ScraperBundle extends AbstractBundle
 							->isRequired()
 							->cannotBeEmpty()
 						->end()
-						->integerNode('concurrencyLimit')
+						->integerNode('concurrency_limit')
 							->min(1)
 							->defaultNull()
 						->end()
@@ -61,7 +61,7 @@ final class ScraperBundle extends AbstractBundle
 
 		$services->set($serviceId, ScrapeOwlPageScraper::class)
 			->arg('$secret', $config[self::SCRAPE_OWL_TYPE]['secret']) // @phpstan-ignore offsetAccess.nonOffsetAccessible
-			->arg('$concurrencyLimit', $config[self::SCRAPE_OWL_TYPE]['concurrencyLimit'] ?? null) // @phpstan-ignore offsetAccess.nonOffsetAccessible
+			->arg('$concurrencyLimit', $config[self::SCRAPE_OWL_TYPE]['concurrency_limit'] ?? null) // @phpstan-ignore offsetAccess.nonOffsetAccessible
 			->tag('shredio.scraper.scraper');
 
 		$services->alias(PageScraper::class, $serviceId);
