@@ -12,6 +12,8 @@ interface PageScrapeResponse
 
 	public function isSuccess(): bool;
 
+	public function resend(): PageScrapeResponse;
+
 	/**
 	 * Waits for the scraping process to complete.
 	 *
