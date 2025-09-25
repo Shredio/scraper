@@ -12,6 +12,11 @@ interface PageScrapeResponse
 
 	public function isSuccess(): bool;
 
+	/**
+	 * @return int<1, max>
+	 */
+	public function getAttemptNumber(): int;
+
 	public function resend(): PageScrapeResponse;
 
 	/**

@@ -12,6 +12,7 @@ final readonly class PageScrapeRequest
 	 * @param bool|null $fullHtml Whether to return the full HTML of the page. Defaults to true if no elements are specified, false otherwise.
 	 * @param array<non-empty-string, ScrapeElement> $elements
 	 * @param array<non-empty-string, mixed> $options
+	 * @param int<1, max> $attempt The attempt number for this request (used for retries).
 	 */
 	public function __construct(
 		public string $url,
