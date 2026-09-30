@@ -16,7 +16,7 @@ final class ScraperBundle extends AbstractBundle
 
 	public function configure(DefinitionConfigurator $definition): void
 	{
-		$definition->rootNode() // @phpstan-ignore-line
+		$definition->rootNode()
 			->children()
 				->enumNode('type')
 					->values([self::SCRAPE_OWL_TYPE])
